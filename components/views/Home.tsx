@@ -8,12 +8,19 @@ import { Contact } from "../Contact";
 import { ItemTitle, Meta, Prose, Section } from "../layout";
 import { TextLink } from "../TextLink";
 
-export function Home() {
+export function Home({ showHeadshot }: { showHeadshot: boolean }) {
   return (
     <>
       <Intro>
-        <Name>{site.name}</Name>
-        <Title>{site.title}</Title>
+        <Identity>
+          {showHeadshot && (
+            <Avatar src={site.headshot.src} alt={site.headshot.alt} width={64} height={64} decoding="async" />
+          )}
+          <div>
+            <Name>{site.name}</Name>
+            <Title>{site.title}</Title>
+          </div>
+        </Identity>
         <Lede>
           {site.intro.map((line) => (
             <p key={line}>{line}</p>
@@ -106,6 +113,23 @@ const Intro = styled.header`
   display: flex;
   flex-direction: column;
   max-width: 600px;
+`;
+
+const Identity = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${space(4)};
+`;
+
+const Avatar = styled.img`
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: ${color.surface};
+  /* A hairline keeps the photo's edge in both themes. */
+  box-shadow: 0 0 0 1px ${color.border};
 `;
 
 const Name = styled.h1`

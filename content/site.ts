@@ -13,6 +13,9 @@ export const site = {
     "Nine-plus years shipping production UI software, and three years designing and building web apps end to end.",
   ],
 
+  // A square JPEG at public/headshot.jpg, about 256px. Delete the file to hide the photo.
+  headshot: { src: "/headshot.jpg", alt: "Justin Ar-Rasheed" },
+
   contact: {
     email: "justin.ar.rasheed@gmail.com",
     linkedin: "https://www.linkedin.com/in/justinarrasheed/",
