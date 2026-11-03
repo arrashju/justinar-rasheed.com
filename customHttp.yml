@@ -1,0 +1,19 @@
+# Response headers for AWS Amplify Hosting. Amplify reads this file from the repo root on each build.
+customHeaders:
+  - pattern: "**/*"
+    headers:
+      - key: Strict-Transport-Security
+        value: max-age=31536000; includeSubDomains
+      - key: X-Content-Type-Options
+        value: nosniff
+      - key: X-Frame-Options
+        value: DENY
+      - key: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - key: Permissions-Policy
+        value: camera=(), microphone=(), geolocation=()
+  # Next fingerprints everything under _next/static, so it can be cached forever.
+  - pattern: "_next/static/**/*"
+    headers:
+      - key: Cache-Control
+        value: public, max-age=31536000, immutable
