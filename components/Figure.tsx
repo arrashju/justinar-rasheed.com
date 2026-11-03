@@ -4,16 +4,15 @@ import styled, { css } from "styled-components";
 import type { FigureContent, Shot } from "@/content/site";
 import { color, media, space, type } from "@/styles/tokens";
 
-// A screenshot, or a placeholder until one is set. Each shot swaps to its dark version with the
-// visitor's system setting, the same way the page itself does.
+// A screenshot in both themes: each shot swaps to its dark version with the visitor's system
+// setting, the same way the page itself does. With no shots it renders nothing, so a highlight
+// without a strong picture stands as text.
 export function Figure({ caption, frame = "browser", shots }: FigureContent) {
+  if (!shots?.length) return null;
+
   return (
     <Frame>
-      {!shots?.length ? (
-        <Placeholder role="img" aria-label={`Screenshot placeholder: ${caption}`}>
-          <span aria-hidden="true">Screenshot</span>
-        </Placeholder>
-      ) : frame === "phone" ? (
+      {frame === "phone" ? (
         <Plate>
           {shots.map((shot) => (
             <Phone key={shot.light}>
@@ -52,17 +51,6 @@ const fill = css`
     width: 100%;
     height: auto;
   }
-`;
-
-const Placeholder = styled.div`
-  display: grid;
-  place-items: center;
-  aspect-ratio: 16 / 10;
-  border-radius: 12px;
-  background: ${color.surface};
-  box-shadow: inset 0 0 0 1px ${color.border};
-  color: ${color.tertiary};
-  ${type.small}
 `;
 
 const Wide = styled.div`

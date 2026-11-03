@@ -38,7 +38,7 @@ export type FigureContent = {
   caption: string;
   // "browser" is one wide shot; "phone" puts up to two phone shots side by side.
   frame?: "browser" | "phone";
-  // Left out, the figure is a placeholder.
+  // Left out, the highlight shows no picture.
   shots?: Shot[];
 };
 
