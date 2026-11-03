@@ -152,7 +152,5 @@ export const recognition: Credential[] = [
     issuer: "Amazon Web Services",
     // TODO: match the year to the award date on your LinkedIn.
     year: "2023",
-    // TODO: keep this only if the grant was awarded for this work.
-    note: "For building Need to Talk on AWS",
   },
 ];
