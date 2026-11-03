@@ -23,14 +23,38 @@ export const site = {
   },
 };
 
+// A screenshot in both themes; the page shows the one matching the visitor's setting.
+// Shots use fictional data only: never a real client, provider or patient.
+export type Shot = {
+  light: string;
+  dark: string;
+  width: number;
+  height: number;
+  alt: string;
+};
+
+export type FigureContent = {
+  // Say what the pixels show, and that the people in them are fictional.
+  caption: string;
+  // "browser" is one wide shot; "phone" puts up to two phone shots side by side.
+  frame?: "browser" | "phone";
+  // Left out, the figure is a placeholder.
+  shots?: Shot[];
+};
+
 export type Highlight = {
   title: string;
   body: string;
-  figure: string; // the screenshot's caption
-  // TODO: add a screenshot path under public/, e.g. "/work/need-to-talk/insights.png".
-  // Sample data only: never a real client, provider or patient.
-  image?: string;
+  figure: FigureContent;
 };
+
+const shot = (name: string, ext: string, width: number, height: number, alt: string): Shot => ({
+  light: `/work/need-to-talk/${name}-light.${ext}`,
+  dark: `/work/need-to-talk/${name}-dark.${ext}`,
+  width,
+  height,
+  alt,
+});
 
 export type Decision = {
   title: string;
@@ -52,6 +76,13 @@ export const needToTalk = {
     "Need to Talk helps people find a mental health provider and book them directly, and gives providers one place to run their practice: their profile, availability, bookings and insights.",
     "I designed and built it end to end, from the Figma design system to the AWS backend. It is built to operate as a HIPAA business associate, which shaped nearly every technical decision.",
   ],
+  cover: {
+    caption: "A provider’s public profile and booking card. Fictional provider.",
+    frame: "browser",
+    shots: [
+      shot("profile", "webp", 2880, 2000, "A provider profile for Avery Rowe, psychotherapist, beside a booking card with open times."),
+    ],
+  } as FigureContent,
   stack: [
     "Next.js 15 (App Router)",
     "React 19",
@@ -67,27 +98,43 @@ export const needToTalk = {
     {
       title: "A design system in code",
       body: "A shared component library, theme tokens and page templates built from my own Figma design system: multi-state layouts, bottom sheets, drag-and-drop reordering and full-screen search, with light and dark themes from the same tokens.",
-      figure: "Component library and theme tokens",
+      figure: {
+        caption: "The provider’s Calendar with a day’s sheet open, and the Sessions list. Fictional provider and clients.",
+        frame: "phone",
+        shots: [
+          shot("calendar", "png", 492, 1000, "A month calendar on a phone, with a sheet open for Thursday, October 22, set to available."),
+          shot("sessions", "png", 492, 1000, "A list of upcoming sessions on a phone, one awaiting approval."),
+        ],
+      },
     },
     {
       title: "Headless content pipeline",
       body: "Multi-author articles moving through draft, in review, approved, published and archived, with the editor and the review flow built into the product.",
-      figure: "Article editor and review workflow",
+      // TODO: needs a dev lab with a fictional article and authors.
+      figure: { caption: "Article editor and review workflow" },
     },
     {
       title: "Insights dashboard",
       body: "Interactive time-series charts (Nivo on D3) over an analytics pipeline that streams events through Kinesis Firehose and queries them with Athena.",
-      figure: "Provider insights charts",
+      // TODO: needs a dev lab with fictional chart data.
+      figure: { caption: "Provider insights charts" },
     },
     {
       title: "Calendar and video integrations",
       body: "OAuth integrations with Google, Zoom, Microsoft Teams and Outlook, shared across the web app and a React Native client.",
-      figure: "Integrations settings",
+      // TODO: needs a dev lab with fictional connected accounts.
+      figure: { caption: "Integrations settings" },
     },
     {
       title: "Admin and trust tooling",
       body: "User management, invitations and email previews, Persona identity verification, and automated credential checks against state licensing boards and federal exclusion lists (OIG LEIE, SAM.gov).",
-      figure: "Admin console",
+      figure: {
+        caption: "A license verified, with NPPES, the federal exclusion lists and the state board all cleared. Fictional provider.",
+        frame: "browser",
+        shots: [
+          shot("credential-check", "jpg", 1808, 928, "An Add license form marked verified beside a credential check showing three of three checks cleared."),
+        ],
+      },
     },
   ] as Highlight[],
   decisions: [

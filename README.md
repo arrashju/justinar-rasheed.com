@@ -16,7 +16,9 @@ npm run lint       # type-check
 
 - **All copy** is in `content/site.ts`. Search it for `TODO` before you share the link.
 - **Colours, type, spacing and motion** are in `styles/tokens.ts`. Light and dark follow the visitor's system setting, through CSS variables.
-- **Screenshots**: put them in `public/work/need-to-talk/` and set `image` on the matching highlight in `content/site.ts`. Until then a placeholder shows. Use sample data only, never a real client, provider or patient.
+- **Screenshots** live in `public/work/need-to-talk/`, a light and a dark file each, and are listed on each highlight's `figure` in `content/site.ts`. A highlight without `shots` shows a placeholder. They come from Need to Talk's own shot pipeline on fictional data, never a real client, provider or patient:
+  - Calendar, Sessions and the profile are Need to Talk's marketing shots (`apps/web/public/homepage-v2/images/`, made by `apps/web/scripts/console-shots/`).
+  - The credential check is shot from needtalk.com/for-providers, signed out, by `scripts/shoot-credential.js` (run it from the Need to Talk repo so it finds Playwright; see the file).
 - **Dribbble and résumé** stay off the page until they are set in `content/site.ts`. For the résumé, add `public/resume.pdf` and set `resume: "/resume.pdf"`.
 
 ```

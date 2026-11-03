@@ -51,6 +51,7 @@ export function CaseStudy() {
             <p key={paragraph}>{paragraph}</p>
           ))}
         </Prose>
+        <Figure {...project.cover} />
       </Section>
 
       <Section id="built" label="What I built">
@@ -58,7 +59,7 @@ export function CaseStudy() {
           <Item key={item.title}>
             <ItemTitle>{item.title}</ItemTitle>
             <Body>{item.body}</Body>
-            <Figure caption={item.figure} src={item.image} />
+            <Figure {...item.figure} />
           </Item>
         ))}
       </Section>
