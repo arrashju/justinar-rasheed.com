@@ -19,6 +19,21 @@ export function Home() {
             <p key={line}>{line}</p>
           ))}
         </Lede>
+        <QuickLinks aria-label="Contact">
+          <li>
+            <TextLink href={`mailto:${site.contact.email}`}>Email</TextLink>
+          </li>
+          <li>
+            <TextLink href={site.contact.linkedin} arrow="out">
+              LinkedIn
+            </TextLink>
+          </li>
+          <li>
+            <TextLink href={site.contact.github} arrow="out">
+              GitHub
+            </TextLink>
+          </li>
+        </QuickLinks>
       </Intro>
 
       <Section id="work" label="Work">
@@ -127,6 +142,16 @@ const Lede = styled.div`
   flex-direction: column;
   gap: ${space(3)};
   text-wrap: pretty;
+`;
+
+// Contact within reach at the top: the three links a reader most often wants. The full list
+// stays in the Contact section at the end.
+const QuickLinks = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: ${space(6)};
+  row-gap: ${space(2)};
+  margin-top: ${space(6)};
 `;
 
 const CardCue = styled.span`
