@@ -16,8 +16,9 @@ npm run lint       # type-check
 
 - **All copy** is in `content/site.ts`. Search it for `TODO` before you share the link.
 - **Colours, type, spacing and motion** are in `styles/tokens.ts`. Light and dark follow the visitor's system setting, through CSS variables.
-- **Screenshots** live in `public/work/need-to-talk/`, a light and a dark file each, and are listed on each highlight's `figure` in `content/site.ts`. A highlight without `shots` shows no picture: only the strongest images go on the page. They come from Need to Talk's own shot pipeline on fictional data, never a real client, provider or patient:
-  - Calendar, Sessions and the profile are Need to Talk's marketing shots (`apps/web/public/homepage-v2/images/`, made by `apps/web/scripts/console-shots/`).
+- **Screenshots** live in `public/work/need-to-talk/`, a light and a dark file each, and are listed on each highlight's `figure` in `content/site.ts`. A highlight without `shots` shows no picture: only the strongest images go on the page. They are fictional data from Need to Talk's own shot pipeline, or a provider's own public page with their consent; never a client, a patient, or anything behind sign-in:
+  - The profile is Deborah Spence's public page (needtalk.com/to/drauntie), shot signed out.
+  - Calendar and Sessions are Need to Talk's marketing shots (`apps/web/public/homepage-v2/images/`, made by `apps/web/scripts/console-shots/`).
   - The onboarding shot comes from the Need to Talk dev lab `/dev/onboarding-shots`, shot by `apps/web/scripts/onboarding-shots/shoot.js` in that repo.
 - **Dribbble and résumé** stay off the page until they are set in `content/site.ts`. For the résumé, add `public/resume.pdf` and set `resume: "/resume.pdf"`.
 

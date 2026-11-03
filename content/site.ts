@@ -24,7 +24,8 @@ export const site = {
 };
 
 // A screenshot in both themes; the page shows the one matching the visitor's setting.
-// Shots use fictional data only: never a real client, provider or patient.
+// Shots use fictional data, or a provider's own public page with their consent:
+// never a client, a patient, or anything behind sign-in.
 export type Shot = {
   light: string;
   dark: string;
@@ -34,7 +35,7 @@ export type Shot = {
 };
 
 export type FigureContent = {
-  // Say what the pixels show, and that the people in them are fictional.
+  // Say what the pixels show, and when the people in them are fictional.
   caption: string;
   // "browser" is one wide shot; "phone" puts up to two phone shots side by side.
   frame?: "browser" | "phone";
@@ -77,10 +78,10 @@ export const needToTalk = {
     "I designed and built it end to end, from the Figma design system to the AWS backend. It is built to operate as a HIPAA business associate, which shaped nearly every technical decision.",
   ],
   cover: {
-    caption: "A provider’s public profile and booking card. Fictional provider.",
+    caption: "Deborah Spence’s public profile and booking card on needtalk.com.",
     frame: "browser",
     shots: [
-      shot("profile", "webp", 2880, 2000, "A provider profile for Avery Rowe, psychotherapist, beside a booking card with open times."),
+      shot("profile", "jpg", 2880, 2000, "The Need to Talk profile of Deborah Spence, psychotherapist, licensed in Michigan, Florida and Georgia, beside a booking card with a free consultation and open times."),
     ],
   } as FigureContent,
   stack: [
