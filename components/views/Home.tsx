@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import styled from "styled-components";
-import { certifications, education, experience, needToTalk, site, type Credential } from "@/content/site";
+import { certifications, education, experience, needToTalk, recognition, site, type Credential } from "@/content/site";
 import { color, duration, ease, media, space, type, weight } from "@/styles/tokens";
 import { Contact } from "../Contact";
 import { ItemTitle, Meta, Prose, Section } from "../layout";
@@ -71,6 +71,10 @@ export function Home() {
         <Credentials items={certifications} />
       </Section>
 
+      <Section id="recognition" label="Recognition">
+        <Credentials items={recognition} />
+      </Section>
+
       <Section id="contact" label="Contact">
         <Stack>
           <Prose>
@@ -90,7 +94,7 @@ function Credentials({ items }: { items: Credential[] }) {
         <li key={item.name}>
           <CredentialName>{item.name}</CredentialName>
           <Meta>
-            {item.issuer} &middot; {item.year}
+            {[item.issuer, item.year, item.note].filter(Boolean).join(" \u00b7 ")}
           </Meta>
         </li>
       ))}

@@ -131,6 +131,7 @@ export type Credential = {
   name: string;
   issuer: string;
   year: string;
+  note?: string;
 };
 
 export const education: Credential[] = [
@@ -142,4 +143,15 @@ export const certifications: Credential[] = [
   { name: "AWS Certified Solutions Architect – Associate", issuer: "Amazon Web Services", year: "2023" },
   { name: "Scaling Design Systems", issuer: "Dribbble", year: "2023" },
   { name: "Google UX Design", issuer: "Google", year: "2022" },
+];
+
+export const recognition: Credential[] = [
+  {
+    name: "AWS All Builders Welcome Grant",
+    issuer: "Amazon Web Services",
+    // TODO: match the year to the award date on your LinkedIn.
+    year: "2023",
+    // TODO: keep this only if the grant was awarded for this work.
+    note: "For building Need to Talk on AWS",
+  },
 ];
