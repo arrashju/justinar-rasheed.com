@@ -129,10 +129,10 @@ export const needToTalk = {
       title: "Admin and trust tooling",
       body: "User management, invitations and email previews, Persona identity verification, and automated credential checks against state licensing boards and federal exclusion lists (OIG LEIE, SAM.gov).",
       figure: {
-        caption: "A license verified, with NPPES, the federal exclusion lists and the state board all cleared. Fictional provider.",
+        caption: "The onboarding wizard\u2019s NPI step, with the number verified against the NPPES registry. Fictional provider.",
         frame: "browser",
         shots: [
-          shot("credential-check", "jpg", 1808, 928, "An Add license form marked verified beside a credential check showing three of three checks cleared."),
+          shot("onboarding-npi", "jpg", 2880, 1800, "The onboarding wizard at step 3 of 10: an NPI number entered and marked verified, with the onboarding rail on the left."),
         ],
       },
     },
