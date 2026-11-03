@@ -17,8 +17,9 @@ export const site = {
     email: "justin.ar.rasheed@gmail.com",
     linkedin: "https://www.linkedin.com/in/justinarrasheed/",
     github: "https://github.com/arrashju", // TODO: confirm this is the profile you want public
-    dribbble: "https://dribbble.com/", // TODO: add your Dribbble profile URL
-    resume: "/resume.pdf", // TODO: replace public/resume.pdf with your résumé
+    // Left empty, a row stays off the page.
+    dribbble: "", // TODO: your Dribbble profile URL
+    resume: "", // TODO: put your résumé at public/resume.pdf, then set this to "/resume.pdf"
   },
 };
 

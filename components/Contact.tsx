@@ -16,7 +16,7 @@ const rows = [
   { label: "GitHub", href: contact.github, text: bare(contact.github), arrow: "out" as const },
   { label: "Dribbble", href: contact.dribbble, text: bare(contact.dribbble), arrow: "out" as const },
   { label: "Résumé", href: contact.resume, text: "PDF", arrow: "right" as const },
-];
+].filter((row) => row.href);
 
 export function Contact() {
   return (
