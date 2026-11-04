@@ -28,6 +28,7 @@ components/views/        one file per page
 components/              layout, links, figure, contact, footer
 content/site.ts          every word on the site
 styles/                  tokens and global styles
+vendor/need-to-talk/     the booking picker's code, copied unchanged from Need to Talk (see its README)
 vercel.json              security headers
 ```
 

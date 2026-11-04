@@ -3,6 +3,7 @@
 import styled from "styled-components";
 import { needToTalk, site } from "@/content/site";
 import { color, media, space, type, weight } from "@/styles/tokens";
+import { BookingDemo, BookingDemoCaption } from "../BookingDemo";
 import { Figure } from "../Figure";
 import { Indented, ItemTitle, Prose, Section } from "../layout";
 import { TextLink } from "../TextLink";
@@ -52,6 +53,13 @@ export function CaseStudy() {
           ))}
         </Prose>
         <Figure {...project.cover} />
+      </Section>
+
+      <Section id="try" label={project.demo.label}>
+        <figure>
+          <BookingDemo />
+          <BookingDemoCaption as="figcaption">{project.demo.caption}</BookingDemoCaption>
+        </figure>
       </Section>
 
       <Section id="built" label="What I built">

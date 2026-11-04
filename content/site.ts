@@ -84,6 +84,12 @@ export const needToTalk = {
       shot("profile", "jpg", 2880, 2000, "The Need to Talk profile of Deborah Spence, psychotherapist, licensed in Michigan, Florida and Georgia, beside a booking card with a free consultation and open times."),
     ],
   } as FigureContent,
+  // The live booking picker (components/BookingDemo.tsx).
+  demo: {
+    label: "Try it",
+    caption:
+      "Need to Talk\u2019s booking picker, running the product\u2019s own day grid and time chips on fictional openings. Pick a day, then a time.",
+  },
   stack: [
     "Next.js 15 (App Router)",
     "React 19",
