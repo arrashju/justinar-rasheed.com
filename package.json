@@ -12,7 +12,6 @@
     "node": "22.x"
   },
   "dependencies": {
-    "moment-timezone": "0.5.48",
     "next": "15.5.28",
     "react": "19.1.10",
     "react-dom": "19.1.10",
