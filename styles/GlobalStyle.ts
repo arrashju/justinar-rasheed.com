@@ -77,6 +77,13 @@ export const GlobalStyle = createGlobalStyle`
         transform: translateY(6px);
       }
     }
+
+    /* For a page exactly the window's height, where the 6px rise would overflow it. */
+    @keyframes fade {
+      from {
+        opacity: 0;
+      }
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {

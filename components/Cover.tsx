@@ -2,7 +2,7 @@
 
 import styled from "styled-components";
 import { site } from "@/content/site";
-import { color, layout, space, type, weight } from "@/styles/tokens";
+import { color, layout, media, space, type, weight } from "@/styles/tokens";
 import { ContactIcons } from "./ContactIcons";
 import { TextLink } from "./TextLink";
 
@@ -58,6 +58,13 @@ const Frame = styled.main`
   padding: ${space(6)} ${layout.gutter} 0;
   overflow: hidden;
   background: ${color.surface};
+
+  /* Fade in without the other pages' 6px rise: risen, the cover is 6px taller than the
+     window, so a browser that always shows scrollbars draws one, then drops it, and the
+     page shifts sideways. */
+  ${media.motion} {
+    animation-name: fade;
+  }
 
   ${wide} {
     min-height: max(100svh, 620px);
