@@ -43,7 +43,7 @@ export function Portfolio() {
               meta={`${needToTalk.role} \u00b7 ${needToTalk.dates}`}
               media={
                 <Shot>
-                  <Picture shot={needToTalk.cover.shots![0]} />
+                  <Picture shot={needToTalk.card.shots![0]} />
                 </Shot>
               }
             >

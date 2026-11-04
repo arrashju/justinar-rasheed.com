@@ -81,9 +81,18 @@ export const needToTalk = {
     "Need to Talk helps people find a mental health provider and book them directly, and gives providers one place to run their practice: their profile, availability, bookings and insights.",
     "I designed and built it end to end, from the Figma design system to the AWS backend. It is built to operate as a HIPAA business associate, which shaped nearly every technical decision.",
   ],
+  // The case study opens on the console, the part providers work in; the profile already leads
+  // the portfolio's Work card, so the case study moves the story on instead of repeating it.
   cover: {
-    caption: "Deborah Spence’s public profile and booking card on needtalk.com.",
-    link: { href: "https://www.needtalk.com/to/drauntie", label: "See her profile" },
+    caption: "The provider\u2019s Calendar: each day\u2019s hours and bookings, with the settings that apply every week beside it. Fictional provider and clients.",
+    frame: "browser",
+    shots: [
+      shot("calendar-desktop", "jpg", 2348, 1456, "A November month calendar with each weekday\u2019s hours and booking counts, two days off and weekends closed, beside a Settings column listing status, availability, the visit, guest reminders and general."),
+    ],
+  } as FigureContent,
+  // The portfolio's Work card.
+  card: {
+    caption: "Deborah Spence\u2019s public profile and booking card on needtalk.com.",
     frame: "browser",
     shots: [
       shot("profile", "jpg", 2880, 2000, "The Need to Talk profile of Deborah Spence, psychotherapist, licensed in Michigan, Florida and Georgia, beside a booking card with a free consultation and open times."),
@@ -101,6 +110,18 @@ export const needToTalk = {
     "Cognito",
   ],
   highlights: [
+    {
+      title: "Profiles people book from",
+      body: "Every provider gets a public profile and booking page: their credentials, how they work, and their open times, booked directly.",
+      figure: {
+        caption: "Deborah Spence\u2019s public profile and booking card on needtalk.com.",
+        link: { href: "https://www.needtalk.com/to/drauntie", label: "See her profile" },
+        frame: "browser",
+        shots: [
+          shot("profile", "jpg", 2880, 2000, "The Need to Talk profile of Deborah Spence, psychotherapist, licensed in Michigan, Florida and Georgia, beside a booking card with a free consultation and open times."),
+        ],
+      },
+    },
     {
       title: "A design system in code",
       body: "A shared component library, theme tokens and page templates built from my own Figma design system: multi-state layouts, bottom sheets, drag-and-drop reordering and full-screen search, with light and dark themes from the same tokens.",
