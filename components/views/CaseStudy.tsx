@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { needToTalk, site } from "@/content/site";
 import { color, media, space, type, weight } from "@/styles/tokens";
 import { Figure } from "../Figure";
+import { Footer } from "../Footer";
 import { Indented, ItemTitle, Prose, Section } from "../layout";
 import { TextLink } from "../TextLink";
 
@@ -84,6 +85,7 @@ export function CaseStudy() {
           </p>
         </Prose>
       </Section>
+      <Footer />
     </>
   );
 }

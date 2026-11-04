@@ -2,7 +2,7 @@
 
 import styled, { css } from "styled-components";
 import type { FigureContent, Shot } from "@/content/site";
-import { color, media, space, type } from "@/styles/tokens";
+import { color, media, radius, space, type } from "@/styles/tokens";
 
 // A screenshot in both themes: each shot swaps to its dark version with the visitor's system
 // setting, the same way the page itself does. With no shots it renders nothing, so a highlight
@@ -56,7 +56,7 @@ const fill = css`
 const Wide = styled.div`
   ${fill}
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: ${radius.md};
   /* The hairline keeps a white shot's edge on a white page. */
   box-shadow: 0 0 0 1px ${color.border};
 `;
@@ -67,7 +67,7 @@ const Plate = styled.div`
   justify-content: center;
   gap: ${space(4)};
   padding: ${space(6)} ${space(4)};
-  border-radius: 12px;
+  border-radius: ${radius.md};
   background: ${color.surface};
   box-shadow: inset 0 0 0 1px ${color.border};
 

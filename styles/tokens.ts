@@ -10,10 +10,9 @@ const light = {
   surface: "#f3f3f5",
   accent: "#2c55c9",
   selection: "rgba(44, 85, 201, 0.14)",
-  // The light behind the cover portrait, after Need to Talk's hero: a core pool over a
-  // wide faint skirt, so it never reads as a disc. The accent in light...
-  glow: "rgba(44, 85, 201, 0.16)",
-  glowSpread: "rgba(44, 85, 201, 0.05)",
+  // The cover name's fade, top to bottom: felt more than seen.
+  nameTop: "#111113",
+  nameBottom: "#38383f",
 };
 
 const dark: typeof light = {
@@ -25,10 +24,8 @@ const dark: typeof light = {
   surface: "#17171a",
   accent: "#8faaff",
   selection: "rgba(143, 170, 255, 0.22)",
-  // ...and a neutral cool white in dark: a coloured pool on near-black reads as a stain,
-  // where white reads as studio backlight.
-  glow: "rgba(175, 197, 230, 0.16)",
-  glowSpread: "rgba(175, 197, 230, 0.05)",
+  nameTop: "#f2f2f4",
+  nameBottom: "#cacad1",
 };
 
 const toVars = (palette: typeof light) =>
@@ -52,7 +49,13 @@ export const type = {
   lede: "font-size: 18px; line-height: 1.55; letter-spacing: -0.005em;",
   title: "font-size: 20px; line-height: 1.3; letter-spacing: -0.012em;",
   display: "font-size: 32px; line-height: 1.15; letter-spacing: -0.025em;",
+  // The cover's name, sized by the component (it scales with the window). Need to Talk's
+  // hero rung is 1.1 / -0.04em; two short stacked lines read as one block set tighter.
+  hero: "line-height: 0.95; letter-spacing: -0.045em;",
 };
+
+// Corners, one scale picked by what the part is (Need to Talk's, trimmed to what we use).
+export const radius = { xs: "4px", sm: "8px", md: "12px", lg: "16px", pill: "999px" };
 
 export const weight = { regular: 400, medium: 500, semibold: 600 };
 

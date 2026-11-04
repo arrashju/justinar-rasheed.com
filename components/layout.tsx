@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import styled from "styled-components";
-import { color, layout, media, space, type, weight } from "@/styles/tokens";
+import { color, layout, media, radius, space, type, weight } from "@/styles/tokens";
 
 // The page column: main, then the footer. On a wide screen each section is a
 // two-column grid: a quiet label, then its content.
@@ -30,16 +30,18 @@ export const Main = styled.main`
   }
 `;
 
-export function Section({ id, label, children }: { id: string; label: string; children: ReactNode }) {
+// `split`: on the portfolio's wide two-column layout the label stacks over its content,
+// because the pinned menu already names the sections down the left.
+export function Section({ id, label, split, children }: { id: string; label: string; split?: boolean; children: ReactNode }) {
   return (
-    <Grid aria-labelledby={id}>
+    <Grid aria-labelledby={id} $split={split}>
       <SectionLabel id={id}>{label}</SectionLabel>
       <Body>{children}</Body>
     </Grid>
   );
 }
 
-const Grid = styled.section`
+const Grid = styled.section<{ $split?: boolean }>`
   display: flex;
   flex-direction: column;
   gap: ${space(4)};
@@ -49,9 +51,18 @@ const Grid = styled.section`
     grid-template-columns: ${layout.label} minmax(0, 1fr);
     column-gap: ${space(8)};
   }
+
+  ${({ $split }) =>
+    $split &&
+    `@media (min-width: 1100px) {
+      display: flex;
+      flex-direction: column;
+    }`}
 `;
 
 export const SectionLabel = styled.h2`
+  /* Clear of the window's top when jumped to from the menu. */
+  scroll-margin-top: ${space(24)};
   ${type.small}
   font-weight: ${weight.medium};
   color: ${color.tertiary};
@@ -106,7 +117,7 @@ export const SkipLink = styled.a`
   left: ${space(3)};
   z-index: 10;
   padding: ${space(2)} ${space(3)};
-  border-radius: 8px;
+  border-radius: ${radius.sm};
   background: ${color.ink};
   color: ${color.bg};
   ${type.small}

@@ -63,6 +63,10 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   ${media.motion} {
+    html {
+      scroll-behavior: smooth;
+    }
+
     main {
       animation: enter 480ms ${ease} both;
     }

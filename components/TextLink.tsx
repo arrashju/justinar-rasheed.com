@@ -3,7 +3,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import styled, { css } from "styled-components";
-import { color, duration, ease } from "@/styles/tokens";
+import { color, duration, ease, radius } from "@/styles/tokens";
 
 type Arrow = "right" | "left" | "out";
 
@@ -82,7 +82,7 @@ const Glyph = styled.span`
 
 export const Anchor = styled.a<{ $quiet?: boolean; $arrow?: Arrow }>`
   color: ${color.ink};
-  border-radius: 2px;
+  border-radius: ${radius.xs};
 
   ${({ $quiet }) =>
     $quiet &&

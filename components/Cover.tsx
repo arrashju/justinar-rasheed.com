@@ -3,6 +3,7 @@
 import styled from "styled-components";
 import { site } from "@/content/site";
 import { color, layout, space, type, weight } from "@/styles/tokens";
+import { ContactIcons } from "./ContactIcons";
 import { TextLink } from "./TextLink";
 
 // The homepage, whole: the name large, the cut-out portrait standing on the window's
@@ -12,22 +13,12 @@ export function Cover() {
     <Frame id="main">
       <Top>
         <Role>{site.title}</Role>
-        <Links aria-label="Contact">
+        <Links>
           <li>
             <TextLink href="/portfolio/">Portfolio</TextLink>
           </li>
           <li>
-            <TextLink href={`mailto:${site.contact.email}`}>Email</TextLink>
-          </li>
-          <li>
-            <TextLink href={site.contact.linkedin} arrow="out">
-              LinkedIn
-            </TextLink>
-          </li>
-          <li>
-            <TextLink href={site.contact.github} arrow="out">
-              GitHub
-            </TextLink>
+            <ContactIcons />
           </li>
         </Links>
       </Top>
@@ -60,7 +51,6 @@ const wide = "@media (min-width: 900px)";
 // The whole window, and nothing under it: the portrait's bottom edge is the window's.
 const Frame = styled.main`
   position: relative;
-  isolation: isolate;
   display: flex;
   flex-direction: column;
   min-height: 100svh;
@@ -68,29 +58,10 @@ const Frame = styled.main`
   overflow: hidden;
   background: ${color.surface};
 
-  /* Light rising from the bottom edge behind the portrait, never behind the name. */
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    background:
-      radial-gradient(ellipse 520px 440px at 50% 100%, ${color.glow} 0%, transparent 100%),
-      radial-gradient(ellipse 900px 720px at 50% 100%, ${color.glowSpread} 0%, transparent 100%);
-  }
-
   ${wide} {
     min-height: max(100svh, 620px);
     padding: ${space(8)} ${space(10)} 0;
 
-    /* Centred under the portrait: its right inset plus half its width. */
-    &::before {
-      --x: calc(100% - ${space(6)} - min(26vw, 420px));
-      background:
-        radial-gradient(ellipse 760px 600px at var(--x) 100%, ${color.glow} 0%, transparent 100%),
-        radial-gradient(ellipse 1400px 960px at var(--x) 100%, ${color.glowSpread} 0%, transparent 100%);
-    }
   }
 `;
 
@@ -115,7 +86,12 @@ const Role = styled.p`
 
 const Links = styled.ul`
   display: flex;
-  gap: ${space(5)};
+  align-items: center;
+  gap: ${space(3)};
+
+  li:first-child {
+    margin-right: ${space(4)};
+  }
 `;
 
 const Name = styled.h1`
@@ -123,10 +99,14 @@ const Name = styled.h1`
   z-index: 1;
   margin-top: ${space(10)};
   font-size: clamp(56px, 15vw, 72px);
-  line-height: 0.95;
-  letter-spacing: -0.045em;
+  ${type.hero}
   font-weight: ${weight.semibold};
   color: ${color.ink};
+  /* A barely-there fade, top to bottom; the solid colour above is the fallback. */
+  background: linear-gradient(180deg, ${color.nameTop}, ${color.nameBottom});
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 
   span {
     display: block;
@@ -161,8 +141,14 @@ const Enter = styled.p`
 // is capped so the name and the face always keep their own columns.
 const Portrait = styled.img`
   display: block;
-  width: min(150%, 600px);
-  height: auto;
+  /* Sized by the height left under the name, so on any phone it fills down to the
+     bottom edge; the screen's sides crop the shoulders, never the photo's edge. */
+  height: clamp(300px, calc(100svh - 340px), 72svh);
+  width: auto;
+  max-width: none;
+  aspect-ratio: ${site.portrait.width} / ${site.portrait.height};
+  /* A flex column stretches its children to its width; the portrait keeps its own. */
+  align-self: flex-start;
   /* Wider than the column on a phone, so centre it on the column's middle explicitly. */
   margin: auto 0 0 50%;
   transform: translateX(-50%);
@@ -172,6 +158,7 @@ const Portrait = styled.img`
     right: ${space(6)};
     bottom: 0;
     width: min(52vw, 840px);
+    height: auto;
     margin: 0;
     transform: none;
   }

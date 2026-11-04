@@ -23,11 +23,12 @@ npm run lint       # type-check
 - **Dribbble and résumé** stay off the page until they are set in `content/site.ts`. For the résumé, add `public/resume.pdf` and set `resume: "/resume.pdf"`.
 
 ```
-app/                     routes: home, /work/need-to-talk, 404, icon, og.png (link preview)
+app/                     routes: home (the cover), (pages)/portfolio, (pages)/work/need-to-talk, 404, icon, og.png
 components/views/        one file per page
-components/              layout, links, figure, contact, footer
+components/              cover, layout, links, figure, contact, section menu, footer
+components/icons/        the icon set: lucide glyphs sized like Need to Talk's, brand marks in brand.tsx
 content/site.ts          every word on the site
-styles/                  tokens and global styles
+styles/                  tokens (colour, type with leading and tracking, radius, spacing) and global styles
 vercel.json              security headers
 ```
 
