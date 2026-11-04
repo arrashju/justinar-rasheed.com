@@ -177,9 +177,8 @@ export const experience: Role[] = [
       // TODO: confirm "7+" is the program count you want shown.
       "Shipped production display UI across 7+ vehicle programs, on screens from 3.5″ to 16″. Currently the Dodge Charger Daytona\u2019s 10″ and 16″ displays.",
       // Each figure links to the publisher's own page. J.D. Power's brand charts: Ram 18th in 2022
-      // (186 PP100), 2nd in 2023 (141), 1st in 2024 (148); it was also 1st in 2021. The cluster
-      // launched before the 2023 study (Justin). Side by side, not "because": IQS covers the
-      // whole vehicle. TODO: confirm the 12.3″ cluster is in the 2025 Ram 1500.
+      // (186 PP100), 2nd in 2023 (141), 1st in 2024 (148). The cluster launched before the 2023
+      // study (Justin). Side by side, not "because": IQS covers the whole vehicle.
       [
         "Built the graphics software for Ram\u2019s all-new 12.3″ digital cluster. The year it launched, Ram climbed from ",
         { text: "18th", href: "https://www.jdpower.com/business/press-releases/2022-us-initial-quality-study-iqs" },
@@ -187,9 +186,21 @@ export const experience: Role[] = [
         { text: "2nd", href: "https://www.jdpower.com/business/press-releases/2023-us-initial-quality-study-iqs" },
         " in J.D. Power\u2019s Initial Quality Study, then ranked ",
         { text: "first in 2024", href: "https://www.jdpower.com/business/press-releases/2024-us-initial-quality-study-iqs" },
-        ". The 2025 Ram 1500 was ",
-        { text: "MotorTrend\u2019s Truck of the Year", href: "https://www.motortrend.com/news/ram-1500-2025-truck-of-the-year" },
         ".",
+      ],
+      // The programs Justin worked on (his LinkedIn: 2019 Wrangler, 2021 Ram and Durango, the
+      // 2025 Ram 1500). In the 2021 study Ram ranked 1st overall (128 PP100) and Dodge 2nd (139).
+      // TODO: confirm the 12.3″ cluster is in the 2025 Ram 1500.
+      [
+        "Programs I worked on won three MotorTrend awards: the 2019 Jeep Wrangler, ",
+        { text: "SUV of the Year", href: "https://www.motortrend.com/events/jeep-wrangler-2019-suv-of-the-year" },
+        "; the 2021 Ram 1500 TRX, ",
+        { text: "Truck of the Year", href: "https://www.motortrend.com/events/ram-1500-trx-2021-truck-of-the-year" },
+        "; and the 2025 Ram 1500, ",
+        { text: "Truck of the Year", href: "https://www.motortrend.com/news/ram-1500-2025-truck-of-the-year" },
+        ". In 2021, the year I worked on the Ram and the Dodge Durango, J.D. Power ranked ",
+        { text: "Ram first and Dodge second", href: "https://www.jdpower.com/business/press-releases/2021-us-initial-quality-study-iqs" },
+        " for initial quality.",
       ],
       "Built Python tooling (lxml, pandas) that automated testing and content workflows.",
       // TODO: confirm "25+" is the number you want shown.
