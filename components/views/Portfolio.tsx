@@ -7,16 +7,13 @@ import { color, duration, ease, radius, space, type, weight } from "@/styles/tok
 import { ContactIcons } from "../ContactIcons";
 import { ICON_SIZE } from "../icons";
 import { SplitLayout, split } from "../SplitLayout";
-import { Entry, EntryList, Prose, Section } from "../layout";
+import { Entry, EntryList, Section } from "../layout";
 import { TextLink } from "../TextLink";
 
 const SECTIONS = [
   { id: "work", label: "Work" },
   { id: "experience", label: "Experience" },
   { id: "education", label: "Education" },
-  { id: "certifications", label: "Certifications" },
-  { id: "recognition", label: "Recognition" },
-  { id: "contact", label: "Contact" },
 ];
 
 export function Portfolio() {
@@ -94,25 +91,10 @@ export function Portfolio() {
             </EntryList>
           </Section>
 
+          {/* Degrees, then certifications, then the grant: one list, so six small items
+              don't need three sections. Contact lives in the icons under the intro. */}
           <Section split id="education" label="Education">
-            <Credentials items={education} />
-          </Section>
-
-          <Section split id="certifications" label="Certifications">
-            <Credentials items={certifications} />
-          </Section>
-
-          <Section split id="recognition" label="Recognition">
-            <Credentials items={recognition} />
-          </Section>
-
-          <Section split id="contact" label="Contact">
-            <Prose>
-              <p>
-                Email is the fastest way to reach me:{" "}
-                <TextLink href={`mailto:${site.contact.email}`}>{site.contact.email}</TextLink>
-              </p>
-            </Prose>
+            <Credentials items={[...education, ...certifications, ...recognition]} />
           </Section>
       </SplitLayout>
     </>

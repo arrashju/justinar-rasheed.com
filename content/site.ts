@@ -205,7 +205,6 @@ export const experience: Role[] = [
         { text: "Truck of the Year", href: "https://www.motortrend.com/news/ram-1500-2025-truck-of-the-year" },
         ".",
       ],
-      "Built Python tooling (lxml, pandas) that automated testing and content workflows.",
       // TODO: confirm "25+" is the number you want shown.
       "Wrote the onboarding docs and processes that ramped 25+ engineers.",
     ],
