@@ -161,8 +161,11 @@ export type Role = {
   formerly?: string;
   title: string;
   dates: string;
-  points: string[];
+  points: Point[];
 };
+
+// A bullet is plain text, or text with links to the sources that back it.
+export type Point = string | (string | { text: string; href: string })[];
 
 export const experience: Role[] = [
   {
@@ -172,8 +175,22 @@ export const experience: Role[] = [
     dates: "2014 – present",
     points: [
       // TODO: confirm "7+" is the program count you want shown.
-      "Shipped production display UI across 7+ vehicle programs, on screens from 3.5″ to 16″. Currently the Ram 12.3″ and the Dodge Charger Daytona 10″ and 16″ displays.",
-      "Work recognized with the #1 J.D. Power IQS award, and contributed to three Motor Trend Truck of the Year wins.",
+      "Shipped production display UI across 7+ vehicle programs, on screens from 3.5″ to 16″. Currently the Dodge Charger Daytona\u2019s 10″ and 16″ displays.",
+      // Each figure links to the publisher's own page. J.D. Power's brand charts: Ram 18th in 2022
+      // (186 PP100), 2nd in 2023 (141), 1st in 2024 (148); it was also 1st in 2021. The cluster
+      // launched before the 2023 study (Justin). Side by side, not "because": IQS covers the
+      // whole vehicle. TODO: confirm the 12.3″ cluster is in the 2025 Ram 1500.
+      [
+        "Built the graphics software for Ram\u2019s all-new 12.3″ digital cluster. The year it launched, Ram climbed from ",
+        { text: "18th", href: "https://www.jdpower.com/business/press-releases/2022-us-initial-quality-study-iqs" },
+        " to ",
+        { text: "2nd", href: "https://www.jdpower.com/business/press-releases/2023-us-initial-quality-study-iqs" },
+        " in J.D. Power\u2019s Initial Quality Study, then ranked ",
+        { text: "first in 2024", href: "https://www.jdpower.com/business/press-releases/2024-us-initial-quality-study-iqs" },
+        ". The 2025 Ram 1500 was ",
+        { text: "MotorTrend\u2019s Truck of the Year", href: "https://www.motortrend.com/news/ram-1500-2025-truck-of-the-year" },
+        ".",
+      ],
       "Built Python tooling (lxml, pandas) that automated testing and content workflows.",
       // TODO: confirm "25+" is the number you want shown.
       "Wrote the onboarding docs and processes that ramped 25+ engineers.",

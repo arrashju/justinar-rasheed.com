@@ -72,8 +72,20 @@ export function Portfolio() {
                     meta={`${role.title} \u00b7 ${role.dates}`}
                   >
                     <Points>
-                      {role.points.map((point) => (
-                        <li key={point}>{point}</li>
+                      {role.points.map((point, i) => (
+                        <li key={i}>
+                          {typeof point === "string"
+                            ? point
+                            : point.map((part, j) =>
+                                typeof part === "string" ? (
+                                  part
+                                ) : (
+                                  <TextLink key={j} href={part.href}>
+                                    {part.text}
+                                  </TextLink>
+                                ),
+                              )}
+                        </li>
                       ))}
                     </Points>
                   </Entry>

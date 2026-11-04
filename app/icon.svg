@@ -8,5 +8,5 @@
     }
   </style>
   <rect width="32" height="32" rx="8" />
-  <path d="M13 9v10.5a3.5 3.5 0 0 1-6 2.45M17 23l4.5-14 4.5 14M18.8 18h5.4" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M19.5 8v11.5a4.5 4.5 0 0 1-8.4 2.2" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
 </svg>
