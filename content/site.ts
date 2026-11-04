@@ -174,8 +174,9 @@ export const experience: Role[] = [
     title: "Senior Software Engineer / UX Engineer",
     dates: "2014 – present",
     points: [
-      // TODO: confirm "7+" is the program count you want shown.
-      "Shipped production display UI across 7+ vehicle programs, on screens from 3.5″ to 16″. Currently the Dodge Charger Daytona\u2019s 10″ and 16″ displays, and Ram trucks, including the new 2027 Ram 1500 Rumble Bee.",
+      // TODO: confirm "7+" is the program count you want shown. The 3.5″ and 7″ screens were
+      // Ram in 2021; on Ram he now works only on the 12.3″ cluster.
+      "Shipped production display UI across 7+ vehicle programs, on screens from 3.5″ to 16″. Currently the Dodge Charger Daytona\u2019s 10″ and 16″ displays and Ram\u2019s 12.3″ cluster, including the new 2027 Ram 1500 Rumble Bee.",
       // Each figure links to the publisher's own page. J.D. Power's brand charts: Ram 18th in 2022
       // (186 PP100), 2nd in 2023 (141), 1st in 2024 (148). The cluster launched before the 2023
       // study (Justin). Side by side, not "because": IQS covers the whole vehicle.
