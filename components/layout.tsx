@@ -124,6 +124,40 @@ export const Meta = styled.p`
   font-variant-numeric: tabular-nums;
 `;
 
+// One entry for every list on the site: what it is, then its facts on one line (the role
+// or issuer · the dates), then anything more. Work, Experience and Education each had their
+// own markup, so their titles, dates and spacing all disagreed.
+export function Entry({ title, meta, children, className }: { title: ReactNode; meta: ReactNode; children?: ReactNode; className?: string }) {
+  return (
+    <EntryRoot className={className}>
+      <ItemTitle>{title}</ItemTitle>
+      <Meta>{meta}</Meta>
+      {children && <EntryBody>{children}</EntryBody>}
+    </EntryRoot>
+  );
+}
+
+const EntryRoot = styled.article`
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+`;
+
+const EntryBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${space(3)};
+  margin-top: ${space(3)};
+  color: ${color.secondary};
+  text-wrap: pretty;
+`;
+
+export const EntryList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: ${space(6)};
+`;
+
 export const SkipLink = styled.a`
   position: absolute;
   top: ${space(3)};
