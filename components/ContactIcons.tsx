@@ -3,7 +3,7 @@
 import styled from "styled-components";
 import { site } from "@/content/site";
 import { color, duration, ease, radius, space } from "@/styles/tokens";
-import { GitHubIcon, ICON_SIZE, LinkedInIcon, Mail } from "./icons";
+import { GitHubIcon, ICON_SIZE, LinkedInIcon, MailIcon } from "./icons";
 
 // Email, LinkedIn and GitHub as their marks, named for screen readers and on hover.
 export function ContactIcons({ className }: { className?: string }) {
@@ -12,7 +12,7 @@ export function ContactIcons({ className }: { className?: string }) {
     <Row className={className}>
       <li>
         <IconLink href={`mailto:${contact.email}`} aria-label="Email" title="Email">
-          <Mail size={ICON_SIZE.chrome} />
+          <MailIcon size={ICON_SIZE.chrome} />
         </IconLink>
       </li>
       <li>

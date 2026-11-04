@@ -6,13 +6,12 @@ import { color, layout, space, type, weight } from "@/styles/tokens";
 import { ContactIcons } from "./ContactIcons";
 import { TextLink } from "./TextLink";
 
-// The homepage, whole: the name large, the cut-out portrait standing on the window's
-// bottom edge, and the way into the work. The portfolio is its own page (/portfolio).
+// The homepage, whole. One block says who and what and where next (name, role, the way
+// in); the portrait stands on the window's bottom edge; the top bar holds only links.
 export function Cover() {
   return (
     <Frame id="main">
       <Top>
-        <Role>{site.title}</Role>
         <Links>
           <li>
             <TextLink href="/portfolio/">Portfolio</TextLink>
@@ -23,16 +22,18 @@ export function Cover() {
         </Links>
       </Top>
 
-      <Name>
-        {/* A non-breaking hyphen, so the name wraps as "Justin / Ar-Rasheed". */}
-        <span>{site.name.split(" ")[0]}</span> <span>{site.name.split(" ").slice(1).join(" ").replace("-", "‑")}</span>
-      </Name>
-
-      <Enter>
-        <TextLink href="/portfolio/" arrow="right">
-          See my work
-        </TextLink>
-      </Enter>
+      <Identity>
+        <Name>
+          {/* A non-breaking hyphen, so the name wraps as "Justin / Ar-Rasheed". */}
+          <span>{site.name.split(" ")[0]}</span> <span>{site.name.split(" ").slice(1).join(" ").replace("-", "\u2011")}</span>
+        </Name>
+        <Role>{site.title}</Role>
+        <Enter>
+          <TextLink href="/portfolio/" arrow="right">
+            See my work
+          </TextLink>
+        </Enter>
+      </Identity>
 
       <Portrait
         src={site.portrait.src}
@@ -61,27 +62,15 @@ const Frame = styled.main`
   ${wide} {
     min-height: max(100svh, 620px);
     padding: ${space(8)} ${space(10)} 0;
-
   }
 `;
 
-const Top = styled.div`
+const Top = styled.nav`
   position: relative;
   z-index: 1;
   display: flex;
-  flex-direction: column;
-  gap: ${space(2)};
+  justify-content: flex-end;
   ${type.small}
-
-  ${wide} {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
-  }
-`;
-
-const Role = styled.p`
-  color: ${color.secondary};
 `;
 
 const Links = styled.ul`
@@ -89,15 +78,34 @@ const Links = styled.ul`
   align-items: center;
   gap: ${space(3)};
 
-  li:first-child {
+  /* Only the Portfolio link's own item; the icon row inside has its own spacing. */
+  > li:first-child {
     margin-right: ${space(4)};
   }
 `;
 
-const Name = styled.h1`
+// Name, role and the way in, read as one unit. On a phone it is centred in the space
+// between the top bar and the portrait; on a wide screen, centred on the window's height
+// beside the face.
+const Identity = styled.div`
   position: relative;
   z-index: 1;
-  margin-top: ${space(10)};
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: ${space(6)} 0;
+
+  ${wide} {
+    position: absolute;
+    left: ${space(10)};
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0;
+  }
+`;
+
+const Name = styled.h1`
   font-size: clamp(56px, 15vw, 72px);
   ${type.hero}
   font-weight: ${weight.semibold};
@@ -113,27 +121,29 @@ const Name = styled.h1`
   }
 
   ${wide} {
-    position: absolute;
-    left: ${space(10)};
-    top: 50%;
-    transform: translateY(-40%);
-    margin: 0;
     font-size: clamp(88px, 9.2vw, 140px);
   }
 `;
 
-const Enter = styled.p`
-  position: relative;
-  z-index: 1;
-  margin-top: ${space(6)};
-  ${type.lede}
-  font-weight: ${weight.medium};
+const Role = styled.p`
+  ${type.body}
+  color: ${color.secondary};
+  text-wrap: balance;
+  margin-top: ${space(4)};
 
   ${wide} {
-    position: absolute;
-    left: ${space(10)};
-    top: calc(50% + clamp(120px, 12vw, 190px));
-    margin: 0;
+    ${type.lede}
+    margin-top: ${space(5)};
+  }
+`;
+
+const Enter = styled.p`
+  ${type.lede}
+  font-weight: ${weight.medium};
+  margin-top: ${space(6)};
+
+  ${wide} {
+    margin-top: ${space(8)};
   }
 `;
 
@@ -150,7 +160,7 @@ const Portrait = styled.img`
   /* A flex column stretches its children to its width; the portrait keeps its own. */
   align-self: flex-start;
   /* Wider than the column on a phone, so centre it on the column's middle explicitly. */
-  margin: auto 0 0 50%;
+  margin: 0 0 0 50%;
   transform: translateX(-50%);
 
   ${wide} {
