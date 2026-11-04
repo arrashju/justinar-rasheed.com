@@ -4,49 +4,59 @@ import styled from "styled-components";
 import { needToTalk, site } from "@/content/site";
 import { color, media, space, type, weight } from "@/styles/tokens";
 import { Figure } from "../Figure";
-import { Footer } from "../Footer";
-import { Indented, ItemTitle, Prose, Section } from "../layout";
+import { ItemTitle, Prose, Section } from "../layout";
+import { SplitLayout, split } from "../SplitLayout";
 import { TextLink } from "../TextLink";
 
 const project = needToTalk;
 
+const SECTIONS = [
+  { id: "overview", label: "Overview" },
+  { id: "built", label: "What I built" },
+  { id: "decisions", label: "Key decisions" },
+  { id: "next", label: "Next" },
+];
+
 export function CaseStudy() {
   return (
-    <>
-      <Header>
-        <Back>
-          <TextLink href="/portfolio/" arrow="left" quiet>
-            Portfolio
-          </TextLink>
-        </Back>
-        <Heading>{project.name}</Heading>
-        <Lede>{project.summary}</Lede>
+    <SplitLayout
+      menu={SECTIONS}
+      aside={
+        <Header>
+          <Back>
+            <TextLink href="/portfolio/" arrow="left" quiet>
+              Portfolio
+            </TextLink>
+          </Back>
+          <Heading>{project.name}</Heading>
+          <Lede>{project.summary}</Lede>
 
-        <Facts>
-          <Fact>
-            <dt>Role</dt>
-            <dd>{project.role}</dd>
-          </Fact>
-          <Fact>
-            <dt>When</dt>
-            <dd>{project.dates}</dd>
-          </Fact>
-          <Fact>
-            <dt>Live</dt>
-            <dd>
-              <TextLink href={project.url} arrow="out">
-                {project.urlLabel}
-              </TextLink>
-            </dd>
-          </Fact>
-          <Fact>
-            <dt>Stack</dt>
-            <dd>{project.stack.join(", ")}</dd>
-          </Fact>
-        </Facts>
-      </Header>
-
-      <Section id="overview" label="Overview">
+          <Facts>
+            <Fact>
+              <dt>Role</dt>
+              <dd>{project.role}</dd>
+            </Fact>
+            <Fact>
+              <dt>When</dt>
+              <dd>{project.dates}</dd>
+            </Fact>
+            <Fact>
+              <dt>Live</dt>
+              <dd>
+                <TextLink href={project.url} arrow="out">
+                  {project.urlLabel}
+                </TextLink>
+              </dd>
+            </Fact>
+            <Fact>
+              <dt>Stack</dt>
+              <dd>{project.stack.join(", ")}</dd>
+            </Fact>
+          </Facts>
+        </Header>
+      }
+    >
+      <Section split id="overview" label="Overview">
         <Prose>
           {project.overview.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
@@ -55,7 +65,7 @@ export function CaseStudy() {
         <Figure {...project.cover} />
       </Section>
 
-      <Section id="built" label="What I built">
+      <Section split id="built" label="What I built">
         {project.highlights.map((item) => (
           <Item key={item.title}>
             <ItemTitle>{item.title}</ItemTitle>
@@ -65,7 +75,7 @@ export function CaseStudy() {
         ))}
       </Section>
 
-      <Section id="decisions" label="Key decisions">
+      <Section split id="decisions" label="Key decisions">
         {project.decisions.map((item) => (
           <Item key={item.title}>
             <ItemTitle>{item.title}</ItemTitle>
@@ -74,7 +84,7 @@ export function CaseStudy() {
         ))}
       </Section>
 
-      <Section id="next" label="Next">
+      <Section split id="next" label="Next">
         <Prose>
           <p>
             <TextLink href={`mailto:${site.contact.email}`}>Get in touch</TextLink> to talk through any of it, or{" "}
@@ -85,12 +95,11 @@ export function CaseStudy() {
           </p>
         </Prose>
       </Section>
-      <Footer />
-    </>
+    </SplitLayout>
   );
 }
 
-const Header = styled(Indented).attrs({ as: "header" })`
+const Header = styled.header`
   display: flex;
   flex-direction: column;
 `;
@@ -99,20 +108,25 @@ const Back = styled.p`
   ${type.small}
   margin-bottom: ${space(10)};
 
-  ${media.wide} {
-    margin-bottom: ${space(14)};
+  ${split} {
+    margin-bottom: ${space(12)};
   }
 `;
 
+// The same headline as the portfolio's name: each page's own name tops its hierarchy.
 const Heading = styled.h1`
-  ${type.display}
+  ${type.headline}
   font-weight: ${weight.semibold};
+
+  ${split} {
+    font-size: 44px;
+  }
 `;
 
 const Lede = styled.p`
   ${type.lede}
   color: ${color.secondary};
-  margin-top: ${space(3)};
+  margin-top: ${space(4)};
   max-width: 560px;
   text-wrap: pretty;
 `;
@@ -127,6 +141,12 @@ const Facts = styled.dl`
   ${media.wide} {
     grid-template-columns: auto auto auto;
     max-width: 600px;
+  }
+
+  /* In the pinned column, one fact per row. */
+  ${split} {
+    grid-template-columns: 1fr;
+    gap: ${space(4)};
   }
 
   dt {

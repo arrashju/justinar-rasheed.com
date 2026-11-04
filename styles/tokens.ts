@@ -49,6 +49,8 @@ export const type = {
   lede: "font-size: 18px; line-height: 1.55; letter-spacing: -0.005em;",
   title: "font-size: 20px; line-height: 1.3; letter-spacing: -0.012em;",
   display: "font-size: 32px; line-height: 1.15; letter-spacing: -0.025em;",
+  // A page's own name (the portfolio, the case study): the top of the page's hierarchy.
+  headline: "font-size: 40px; line-height: 1.1; letter-spacing: -0.03em;",
   // The cover's name, sized by the component (it scales with the window). Need to Talk's
   // hero rung is 1.1 / -0.04em; two short stacked lines read as one block set tighter.
   hero: "line-height: 0.95; letter-spacing: -0.045em;",

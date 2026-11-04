@@ -4,10 +4,9 @@ import Link from "next/link";
 import styled from "styled-components";
 import { certifications, education, experience, needToTalk, recognition, site, type Credential } from "@/content/site";
 import { color, duration, ease, media, radius, space, type, weight } from "@/styles/tokens";
-import { Contact } from "../Contact";
 import { ContactIcons } from "../ContactIcons";
-import { Footer } from "../Footer";
-import { PageNav } from "../PageNav";
+import { ICON_SIZE } from "../icons";
+import { SplitLayout, split } from "../SplitLayout";
 import { ItemTitle, Meta, Prose, Section } from "../layout";
 import { TextLink } from "../TextLink";
 
@@ -23,24 +22,23 @@ const SECTIONS = [
 export function Portfolio() {
   return (
     <>
-      <Split>
-        <Aside>
-          <div>
-            <Intro>
-              <Name>{site.name}</Name>
-              <Title>{site.title}</Title>
-              <Lede>
-                {site.intro.map((line) => (
-                  <p key={line}>{line}</p>
-                ))}
-              </Lede>
-            </Intro>
-            <Menu items={SECTIONS} />
-          </div>
-          <Icons />
-        </Aside>
-
-        <Content>
+      <SplitLayout
+        menu={SECTIONS}
+        aside={
+          <Intro>
+            <Name>
+              <span>{site.name.split(" ")[0]}</span> <span>{site.name.split(" ").slice(1).join(" ").replace("-", "\u2011")}</span>
+            </Name>
+            <Title>{site.title}</Title>
+            <Lede>
+              {site.intro.map((line) => (
+                <p key={line}>{line}</p>
+              ))}
+            </Lede>
+          </Intro>
+        }
+        asideFoot={<Icons size={ICON_SIZE.phone} />}
+      >
           <Section split id="work" label="Work">
             <WorkCard>
               <ItemTitle>
@@ -96,16 +94,14 @@ export function Portfolio() {
           </Section>
 
           <Section split id="contact" label="Contact">
-            <Stack>
-              <Prose>
-                <p>Email is the fastest way to reach me.</p>
-              </Prose>
-              <Contact />
-            </Stack>
+            <Prose>
+              <p>
+                Email is the fastest way to reach me:{" "}
+                <TextLink href={`mailto:${site.contact.email}`}>{site.contact.email}</TextLink>
+              </p>
+            </Prose>
           </Section>
-          <PageFooter />
-        </Content>
-      </Split>
+      </SplitLayout>
     </>
   );
 }
@@ -125,66 +121,9 @@ function Credentials({ items }: { items: Credential[] }) {
   );
 }
 
-// From 1100px the page uses the window: the intro and a section menu stay pinned on the
-// left while the work scrolls on the right. Below it, one column as before.
-const split = "@media (min-width: 1100px)";
-
-const Split = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${space(14)};
-
-  ${split} {
-    display: grid;
-    grid-template-columns: minmax(300px, 380px) minmax(0, 640px);
-    justify-content: space-between;
-    column-gap: ${space(16)};
-    width: min(1160px, calc(100vw - ${space(24)}));
-    margin-left: calc(50% - min(580px, 50vw - ${space(12)}));
-  }
-`;
-
-const Aside = styled.div`
-  ${split} {
-    position: sticky;
-    top: ${space(24)};
-    align-self: start;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: ${space(14)};
-    min-height: calc(100svh - ${space(48)});
-  }
-`;
-
-const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${space(14)};
-
-  ${split} {
-    gap: ${space(18)};
-  }
-`;
-
-const Menu = styled(PageNav)`
-  display: none;
-
-  ${split} {
-    display: block;
-    margin-top: ${space(12)};
-  }
-`;
-
-// The footer line ends the work column, so it sits under the work, not the page's middle.
-const PageFooter = styled(Footer)`
-  ${split} {
-    padding-left: 0;
-  }
-`;
-
 const Icons = styled(ContactIcons)`
-  margin: ${space(6)} 0 0 9px;
+  margin: ${space(8)} 0 0 9px;
+  gap: ${space(5)};
 
   ${split} {
     margin-top: 0;
@@ -197,21 +136,33 @@ const Intro = styled.header`
   max-width: 600px;
 `;
 
+// Name, title, intro: three steps down in size and weight, read in that order.
 const Name = styled.h1`
-  ${type.title}
+  ${type.headline}
   font-weight: ${weight.semibold};
+
+  span {
+    display: block;
+  }
+
+  ${split} {
+    font-size: 44px;
+  }
 `;
 
 const Title = styled.p`
-  ${type.body}
-  color: ${color.tertiary};
-  margin-top: ${space(1)};
+  ${type.lede}
+  font-weight: ${weight.medium};
+  color: ${color.ink};
+  margin-top: ${space(3)};
+  text-wrap: balance;
 `;
 
 const Lede = styled.div`
-  ${type.lede}
+  ${type.body}
   color: ${color.secondary};
-  margin-top: ${space(8)};
+  margin-top: ${space(5)};
+  max-width: 380px;
   display: flex;
   flex-direction: column;
   gap: ${space(3)};
@@ -341,11 +292,6 @@ const Points = styled.ul`
   }
 `;
 
-const Stack = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${space(5)};
-`;
 
 const CredentialList = styled.ul`
   display: flex;

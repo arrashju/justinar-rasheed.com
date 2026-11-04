@@ -1,35 +1,56 @@
-import type { SVGProps } from "react";
+import type { ReactNode, SVGProps } from "react";
 import { ICON_SIZE } from "./size";
 
-// The contact marks, all solid so they read as one row. GitHub and LinkedIn are each
-// brand's own artwork, never a redrawn glyph (Need to Talk's rule), from Simple Icons
-// (CC0; LinkedIn from v13.21.0, the last release that carried it). The envelope is
-// Material's filled "email" (Apache 2.0, @material-design-icons/svg 0.14.15): solid
-// like the brands, where an outline beside them read as a different family.
+// The contact marks, all from one family so they read as one row: Tabler Icons' outline
+// set (MIT, @tabler/icons 3.49.0), drawn on the same 24-unit grid with the same 2px stroke.
+// Marks from different sources (a solid envelope, LinkedIn's tile, GitHub's disc) had three
+// silhouettes and three weights, and never matched however they were sized.
 type IconProps = SVGProps<SVGSVGElement> & { size?: number };
 
-export function GitHubIcon({ size = ICON_SIZE.chrome, ...rest }: IconProps) {
+function Outline({ size = ICON_SIZE.chrome, children, ...rest }: IconProps & { children: ReactNode }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...rest}>
-      <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...rest}
+    >
+      {children}
     </svg>
   );
 }
 
-export function LinkedInIcon({ size = ICON_SIZE.chrome, ...rest }: IconProps) {
+export function GitHubIcon(props: IconProps) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...rest}>
-      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-    </svg>
+    <Outline {...props}>
+      <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+    </Outline>
   );
 }
 
-// The envelope fills only 20x16 of Material's 24-unit box, where the brand marks fill all
-// of theirs, so its box is cropped to the envelope (2..22) to match them optically.
-export function MailIcon({ size = ICON_SIZE.chrome, ...rest }: IconProps) {
+export function LinkedInIcon(props: IconProps) {
   return (
-    <svg width={size} height={size} viewBox="2 2 20 20" fill="currentColor" aria-hidden="true" {...rest}>
-      <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
-    </svg>
+    <Outline {...props}>
+      <path d="M8 11v5" />
+      <path d="M8 8v.01" />
+      <path d="M12 16v-5" />
+      <path d="M16 16v-3a2 2 0 1 0 -4 0" />
+      <path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4l0 -10" />
+    </Outline>
+  );
+}
+
+export function MailIcon(props: IconProps) {
+  return (
+    <Outline {...props}>
+      <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" />
+      <path d="M3 7l9 6l9 -6" />
+    </Outline>
   );
 }

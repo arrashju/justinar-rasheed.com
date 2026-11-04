@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { color, duration, ease, space, type, weight } from "@/styles/tokens";
 
@@ -10,6 +10,10 @@ type Item = { id: string; label: string };
 // click jumps to the section.
 export function PageNav({ items, className }: { items: Item[]; className?: string }) {
   const [active, setActive] = useState(items[0]?.id);
+  // A click marks its section at once and holds it while the page scrolls there: near the
+  // end of the page the last sections can't reach the top, so the scroll alone would mark
+  // the one above.
+  const heldUntil = useRef(0);
 
   useEffect(() => {
     const targets = items
@@ -18,6 +22,7 @@ export function PageNav({ items, className }: { items: Item[]; className?: strin
     // A section counts as being read once it crosses the upper part of the window.
     const observer = new IntersectionObserver(
       (entries) => {
+        if (Date.now() < heldUntil.current) return;
         const visible = entries.filter((e) => e.isIntersecting);
         if (visible.length) {
           const top = visible.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
@@ -36,7 +41,14 @@ export function PageNav({ items, className }: { items: Item[]; className?: strin
       <List>
         {items.map((item) => (
           <li key={item.id}>
-            <Entry href={`#${item.id}`} aria-current={active === item.id ? "true" : undefined}>
+            <Entry
+              href={`#${item.id}`}
+              aria-current={active === item.id ? "true" : undefined}
+              onClick={() => {
+                heldUntil.current = Date.now() + 1200;
+                setActive(item.id);
+              }}
+            >
               {item.label}
             </Entry>
           </li>

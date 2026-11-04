@@ -6,23 +6,24 @@ import { color, duration, ease, radius, space } from "@/styles/tokens";
 import { GitHubIcon, ICON_SIZE, LinkedInIcon, MailIcon } from "./icons";
 
 // Email, LinkedIn and GitHub as their marks, named for screen readers and on hover.
-export function ContactIcons({ className }: { className?: string }) {
+// `size` defaults to the chrome size (the cover's top bar); the portfolio uses the phone size.
+export function ContactIcons({ className, size = ICON_SIZE.chrome }: { className?: string; size?: number }) {
   const { contact } = site;
   return (
     <Row className={className}>
       <li>
         <IconLink href={`mailto:${contact.email}`} aria-label="Email" title="Email">
-          <MailIcon size={ICON_SIZE.chrome} />
+          <MailIcon size={size} />
         </IconLink>
       </li>
       <li>
         <IconLink href={contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in a new tab)" title="LinkedIn">
-          <LinkedInIcon size={ICON_SIZE.chrome} />
+          <LinkedInIcon size={size} />
         </IconLink>
       </li>
       <li>
         <IconLink href={contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in a new tab)" title="GitHub">
-          <GitHubIcon size={ICON_SIZE.chrome} />
+          <GitHubIcon size={size} />
         </IconLink>
       </li>
     </Row>

@@ -67,6 +67,19 @@ export const SectionLabel = styled.h2`
   font-weight: ${weight.medium};
   color: ${color.tertiary};
 
+  /* On a phone the heading pins to the top while its section scrolls, so a long page
+     always says where you are. It spans the screen, on the page's own ground. */
+  @media (max-width: 759px) {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    margin: 0 -${layout.gutter};
+    padding: ${space(3)} ${layout.gutter};
+    background: ${color.bg};
+    color: ${color.ink};
+    font-weight: ${weight.semibold};
+  }
+
   ${media.wide} {
     /* Sit on the first line of a 16px body beside it. */
     padding-top: 3px;

@@ -25,8 +25,8 @@ npm run lint       # type-check
 ```
 app/                     routes: home (the cover), (pages)/portfolio, (pages)/work/need-to-talk, 404, icon, og.png
 components/views/        one file per page
-components/              cover, layout, links, figure, contact, section menu, footer
-components/icons/        the icon set, sized like Need to Talk's; the solid contact marks in marks.tsx
+components/              cover, the split layout both reading pages share, section menu, links, figure, footer
+components/icons/        the icon set, sized like Need to Talk's; the contact marks (one outline family, Tabler's) in marks.tsx
 content/site.ts          every word on the site
 styles/                  tokens (colour, type with leading and tracking, radius, spacing) and global styles
 vercel.json              security headers
