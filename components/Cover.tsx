@@ -3,6 +3,7 @@
 import styled from "styled-components";
 import { site } from "@/content/site";
 import { color, layout, media, space, type, weight } from "@/styles/tokens";
+import { ButtonLink } from "./ButtonLink";
 import { ContactIcons } from "./ContactIcons";
 import { TextLink } from "./TextLink";
 
@@ -29,9 +30,7 @@ export function Cover() {
         </Name>
         <Role>{site.title}</Role>
         <Enter>
-          <TextLink href="/portfolio/" arrow="right">
-            See my work
-          </TextLink>
+          <ButtonLink href="/portfolio/">See my work</ButtonLink>
         </Enter>
       </Identity>
 
@@ -144,9 +143,7 @@ const Role = styled.p`
   }
 `;
 
-const Enter = styled.p`
-  ${type.lede}
-  font-weight: ${weight.medium};
+const Enter = styled.div`
   margin-top: ${space(6)};
 
   ${wide} {

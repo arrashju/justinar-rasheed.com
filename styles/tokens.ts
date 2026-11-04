@@ -4,6 +4,9 @@
 const light = {
   bg: "#fcfcfc",
   ink: "#111113",
+  // A solid ink control under the pointer: one small step lighter, as Apple's neutral pill
+  // (#1d1d1f to #272729 in light, #f5f5f7 to white in dark).
+  inkHover: "#26262a",
   secondary: "#5c5c64",
   tertiary: "#6e6e77",
   border: "#e6e6e9",
@@ -18,6 +21,7 @@ const light = {
 const dark: typeof light = {
   bg: "#0e0e10",
   ink: "#ececef",
+  inkHover: "#ffffff",
   secondary: "#a3a3ab",
   tertiary: "#8a8a93",
   border: "#25252a",

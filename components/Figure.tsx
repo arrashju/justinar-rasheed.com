@@ -41,7 +41,7 @@ export function Figure({ caption, frame = "browser", shots, link }: FigureConten
   );
 }
 
-function Picture({ shot }: { shot: Shot }) {
+export function Picture({ shot }: { shot: Shot }) {
   return (
     <picture>
       <source srcSet={shot.dark} media="(prefers-color-scheme: dark)" />

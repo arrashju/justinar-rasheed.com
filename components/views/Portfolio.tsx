@@ -6,6 +6,7 @@ import { certifications, education, experience, needToTalk, recognition, site, t
 import { color, duration, ease, radius, space, type, weight } from "@/styles/tokens";
 import { ContactIcons } from "../ContactIcons";
 import { ICON_SIZE } from "../icons";
+import { Picture } from "../Figure";
 import { SplitLayout, split } from "../SplitLayout";
 import { Entry, EntryList, Section } from "../layout";
 import { TextLink } from "../TextLink";
@@ -40,6 +41,11 @@ export function Portfolio() {
             <WorkCard
               title={<Stretched href={`/work/${needToTalk.slug}/`}>{needToTalk.name}</Stretched>}
               meta={`${needToTalk.role} \u00b7 ${needToTalk.dates}`}
+              media={
+                <Shot>
+                  <Picture shot={needToTalk.cover.shots![0]} />
+                </Shot>
+              }
             >
               <p>{needToTalk.cardSummary}</p>
               <Links>
@@ -196,6 +202,20 @@ const WorkCard = styled(Entry)`
 
   &:has(:focus-visible) {
     background: ${color.surface};
+  }
+`;
+
+// The work leads with its picture, as a product page does: the profile and booking card the
+// case study opens on, so the evidence is on this page and not one click away.
+const Shot = styled.div`
+  overflow: hidden;
+  border-radius: ${radius.md};
+  box-shadow: 0 0 0 1px ${color.border};
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 `;
 

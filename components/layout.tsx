@@ -127,9 +127,23 @@ export const Meta = styled.p`
 // One entry for every list on the site: what it is, then its facts on one line (the role
 // or issuer · the dates), then anything more. Work, Experience and Education each had their
 // own markup, so their titles, dates and spacing all disagreed.
-export function Entry({ title, meta, children, className }: { title: ReactNode; meta: ReactNode; children?: ReactNode; className?: string }) {
+// `media` is a picture above the words, for an entry that has one to show (the Work card).
+export function Entry({
+  title,
+  meta,
+  media,
+  children,
+  className,
+}: {
+  title: ReactNode;
+  meta: ReactNode;
+  media?: ReactNode;
+  children?: ReactNode;
+  className?: string;
+}) {
   return (
     <EntryRoot className={className}>
+      {media && <EntryMedia>{media}</EntryMedia>}
       <ItemTitle>{title}</ItemTitle>
       <Meta>{meta}</Meta>
       {children && <EntryBody>{children}</EntryBody>}
@@ -141,6 +155,10 @@ const EntryRoot = styled.article`
   display: flex;
   flex-direction: column;
   gap: 2px;
+`;
+
+const EntryMedia = styled.div`
+  margin-bottom: ${space(4)};
 `;
 
 const EntryBody = styled.div`
