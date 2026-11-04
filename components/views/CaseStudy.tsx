@@ -14,8 +14,8 @@ export function CaseStudy() {
     <>
       <Header>
         <Back>
-          <TextLink href="/" arrow="left" quiet>
-            {site.name}
+          <TextLink href="/portfolio/" arrow="left" quiet>
+            Portfolio
           </TextLink>
         </Back>
         <Heading>{project.name}</Heading>

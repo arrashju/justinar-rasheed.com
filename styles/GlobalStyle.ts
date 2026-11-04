@@ -28,6 +28,8 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
+    /* The homepage cover bleeds to the window's edges; never let it add a sideways scroll. */
+    overflow-x: clip;
     background: ${color.bg};
     color: ${color.ink};
     font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;

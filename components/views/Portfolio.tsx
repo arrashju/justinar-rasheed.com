@@ -8,7 +8,7 @@ import { Contact } from "../Contact";
 import { ItemTitle, Meta, Prose, Section } from "../layout";
 import { TextLink } from "../TextLink";
 
-export function Home() {
+export function Portfolio() {
   return (
     <>
       <Intro>

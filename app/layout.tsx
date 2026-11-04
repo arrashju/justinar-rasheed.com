@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import type { ReactNode } from "react";
-import { Footer } from "@/components/Footer";
-import { Main, Page, SkipLink } from "@/components/layout";
+import { SkipLink } from "@/components/layout";
 import { site } from "@/content/site";
 import { GlobalStyle } from "@/styles/GlobalStyle";
 import { palette } from "@/styles/tokens";
@@ -42,10 +41,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <SkipLink href="#main" className="visually-hidden">
             Skip to content
           </SkipLink>
-          <Page>
-            <Main id="main">{children}</Main>
-            <Footer />
-          </Page>
+          {children}
         </StyledComponentsRegistry>
       </body>
     </html>

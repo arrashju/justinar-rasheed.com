@@ -3,7 +3,9 @@
 
 export const site = {
   name: "Justin Ar-Rasheed",
-  title: "Design Engineer — React/Next.js + Product Design",
+  title: "Design engineer · Cofounder of Need to Talk",
+  // The cut-out on the homepage cover (components/Cover.tsx).
+  portrait: { src: "/portrait.webp", alt: "Justin Ar-Rasheed", width: 994, height: 879 },
   url: "https://justinar-rasheed.com",
   description:
     "Design engineer building production web experiences at the seam of design and development.",
