@@ -10,6 +10,10 @@ const light = {
   surface: "#f3f3f5",
   accent: "#2c55c9",
   selection: "rgba(44, 85, 201, 0.14)",
+  // The light behind the cover portrait, after Need to Talk's hero: a core pool over a
+  // wide faint skirt, so it never reads as a disc. The accent in light...
+  glow: "rgba(44, 85, 201, 0.16)",
+  glowSpread: "rgba(44, 85, 201, 0.05)",
 };
 
 const dark: typeof light = {
@@ -21,6 +25,10 @@ const dark: typeof light = {
   surface: "#17171a",
   accent: "#8faaff",
   selection: "rgba(143, 170, 255, 0.22)",
+  // ...and a neutral cool white in dark: a coloured pool on near-black reads as a stain,
+  // where white reads as studio backlight.
+  glow: "rgba(175, 197, 230, 0.16)",
+  glowSpread: "rgba(175, 197, 230, 0.05)",
 };
 
 const toVars = (palette: typeof light) =>

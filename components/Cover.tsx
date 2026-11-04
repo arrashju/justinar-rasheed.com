@@ -60,6 +60,7 @@ const wide = "@media (min-width: 900px)";
 // The whole window, and nothing under it: the portrait's bottom edge is the window's.
 const Frame = styled.main`
   position: relative;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
   min-height: 100svh;
@@ -67,9 +68,29 @@ const Frame = styled.main`
   overflow: hidden;
   background: ${color.surface};
 
+  /* Light rising from the bottom edge behind the portrait, never behind the name. */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 520px 440px at 50% 100%, ${color.glow} 0%, transparent 100%),
+      radial-gradient(ellipse 900px 720px at 50% 100%, ${color.glowSpread} 0%, transparent 100%);
+  }
+
   ${wide} {
     min-height: max(100svh, 620px);
     padding: ${space(8)} ${space(10)} 0;
+
+    /* Centred under the portrait: its right inset plus half its width. */
+    &::before {
+      --x: calc(100% - ${space(6)} - min(26vw, 420px));
+      background:
+        radial-gradient(ellipse 760px 600px at var(--x) 100%, ${color.glow} 0%, transparent 100%),
+        radial-gradient(ellipse 1400px 960px at var(--x) 100%, ${color.glowSpread} 0%, transparent 100%);
+    }
   }
 `;
 
