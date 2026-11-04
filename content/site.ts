@@ -84,10 +84,10 @@ export const needToTalk = {
   // The case study opens on the console, the part providers work in; the profile already leads
   // the portfolio's Work card, so the case study moves the story on instead of repeating it.
   cover: {
-    caption: "The provider\u2019s Calendar: each day\u2019s hours and bookings, with the settings that apply every week beside it. Fictional provider and clients.",
+    caption: "The provider\u2019s console, on the Calendar for one visit type: each day\u2019s hours and bookings, with the settings that apply every week beside it. Fictional provider and clients.",
     frame: "browser",
     shots: [
-      shot("calendar-desktop", "jpg", 2348, 1456, "A November month calendar with each weekday\u2019s hours and booking counts, two days off and weekends closed, beside a Settings column listing status, availability, the visit, guest reminders and general."),
+      shot("calendar-desktop", "jpg", 2880, 1520, "The Need to Talk console: a sidebar with Home, Sessions, Insights, About you, Booking pages, Articles, Integrations, a Psychotherapist role and a Consultation calendar; a November month with each weekday\u2019s hours and booking counts, two days off and weekends closed; and a Settings column with availability, the visit and guest reminders."),
     ],
   } as FigureContent,
   // The portfolio's Work card.
