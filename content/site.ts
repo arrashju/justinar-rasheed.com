@@ -43,6 +43,8 @@ export type FigureContent = {
   frame?: "browser" | "phone";
   // Left out, the highlight shows no picture.
   shots?: Shot[];
+  // A link after the caption, to the live page the shot shows.
+  link?: { href: string; label: string };
 };
 
 export type Highlight = {
@@ -81,6 +83,7 @@ export const needToTalk = {
   ],
   cover: {
     caption: "Deborah Spence’s public profile and booking card on needtalk.com.",
+    link: { href: "https://www.needtalk.com/to/drauntie", label: "See her profile" },
     frame: "browser",
     shots: [
       shot("profile", "jpg", 2880, 2000, "The Need to Talk profile of Deborah Spence, psychotherapist, licensed in Michigan, Florida and Georgia, beside a booking card with a free consultation and open times."),

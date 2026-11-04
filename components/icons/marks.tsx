@@ -24,9 +24,11 @@ export function LinkedInIcon({ size = ICON_SIZE.chrome, ...rest }: IconProps) {
   );
 }
 
+// The envelope fills only 20x16 of Material's 24-unit box, where the brand marks fill all
+// of theirs, so its box is cropped to the envelope (2..22) to match them optically.
 export function MailIcon({ size = ICON_SIZE.chrome, ...rest }: IconProps) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...rest}>
+    <svg width={size} height={size} viewBox="2 2 20 20" fill="currentColor" aria-hidden="true" {...rest}>
       <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
     </svg>
   );

@@ -2,12 +2,13 @@
 
 import styled, { css } from "styled-components";
 import type { FigureContent, Shot } from "@/content/site";
+import { TextLink } from "./TextLink";
 import { color, media, radius, space, type } from "@/styles/tokens";
 
 // A screenshot in both themes: each shot swaps to its dark version with the visitor's system
 // setting, the same way the page itself does. With no shots it renders nothing, so a highlight
 // without a strong picture stands as text.
-export function Figure({ caption, frame = "browser", shots }: FigureContent) {
+export function Figure({ caption, frame = "browser", shots, link }: FigureContent) {
   if (!shots?.length) return null;
 
   return (
@@ -25,7 +26,17 @@ export function Figure({ caption, frame = "browser", shots }: FigureContent) {
           <Picture shot={shots[0]} />
         </Wide>
       )}
-      <Caption>{caption}</Caption>
+      <Caption>
+        {caption}
+        {link && (
+          <>
+            {" "}
+            <TextLink href={link.href} arrow="out" quiet>
+              {link.label}
+            </TextLink>
+          </>
+        )}
+      </Caption>
     </Frame>
   );
 }
