@@ -166,14 +166,28 @@ export const needToTalk = {
   ] as Highlight[],
   decisions: [
     {
+      // AWS's HIPAA-eligible list covers Cognito, AppSync, Lambda, DynamoDB and S3. Auth0 lists its
+      // BAA as an Enterprise add-on (auth0.com/pricing), not on self-service plans.
+      title: "Serverless on AWS, under one BAA",
+      body: "Sign-in (Cognito), the API (AppSync and Lambda) and the data (DynamoDB and S3) all run on services AWS\u2019s business associate agreement covers. Everything bills per request, so a young marketplace costs almost nothing while it\u2019s quiet. Auth0 would have meant a second BAA, which it offers only as an Enterprise add-on.",
+    },
+    {
       title: "Persona over Stripe Identity",
-      body: "As a business associate, the platform needs a BAA from the vendor that verifies providers' identities. Stripe doesn't sign BAAs; Persona does. That settled it, even with Stripe already handling payments.",
+      body: "As a business associate, the platform needs a BAA from the vendor that verifies providers\u2019 identities. Stripe doesn\u2019t sign BAAs; Persona does. That settled it, even with Stripe already handling payments.",
+    },
+    {
+      // The $9,000 is a vendor's quote to us; the vendor doesn't publish pricing, so it isn't named.
+      title: "Credential checks built on public registries",
+      body: "NPI numbers are checked against the federal NPPES registry, licenses against state licensing boards, and exclusions against OIG\u2019s LEIE and SAM.gov, all automated in-house. The credentialing vendor we priced would have cost about $9,000 a year.",
     },
     {
       title: "Notifications carry no health information",
-      body: "Email, SMS and push leave the system we control. Every notification says only that something happened, like “You have a new message”, and the details wait behind sign-in.",
+      body: "Email, SMS and push leave the system we control. Every notification says only that something happened, like \u201cYou have a new message\u201d, and the details wait behind sign-in.",
     },
-    // TODO: add one or two more decisions you'd like to talk through in an interview.
+    {
+      title: "A design system the tests enforce",
+      body: "Colors exist only as tokens, and ratchet tests fail any new hard-coded color, off-scale icon size, text weight or loose line height, so the system can\u2019t erode one file at a time.",
+    },
   ] as Decision[],
 };
 
