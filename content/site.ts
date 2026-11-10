@@ -236,9 +236,13 @@ export const experience: Role[] = [
       // From his LinkedIn projects. TODO: confirm the 12.3″ cluster is in the 2025 Ram 1500.
       // Top Gear's US Car Awards 2027 went to the TRX SRT trim, not the Rumble Bee; added on
       // Justin's say-so (Nov 10 2026). TODO: confirm the TRX SRT ships the 12.3″ cluster.
+      // He also worked on the 2020 Ram Heavy Duty (Justin, Nov 10 2026), less closely than the
+      // 2021 TRX, which is why that one has its own bullet and this one is a list item.
       [
         "Other programs I worked on won awards too: the 2019 Jeep Wrangler, ",
         { text: "MotorTrend’s SUV of the Year", href: "https://www.motortrend.com/events/jeep-wrangler-2019-suv-of-the-year" },
+        "; the 2020 Ram Heavy Duty, ",
+        { text: "MotorTrend’s Truck of the Year", href: "https://www.motortrend.com/news/ram-heavy-duty-pickup-2020-truck-of-the-year" },
         "; the 2025 Ram 1500, ",
         { text: "MotorTrend’s Truck of the Year", href: "https://www.motortrend.com/news/ram-1500-2025-truck-of-the-year" },
         "; and the 2027 Ram 1500 TRX SRT, ",
