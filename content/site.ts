@@ -268,7 +268,7 @@ export const education: Credential[] = [
 ];
 
 export const certifications: Credential[] = [
-  { name: "AWS Certified Solutions Architect – Associate", issuer: "Amazon Web Services", year: "2023" },
+  { name: "AWS Certified Solutions Architect – Associate", issuer: "Amazon Web Services", year: "2023 – 2026" },
   { name: "Scaling Design Systems", issuer: "Dribbble", year: "2023" },
   { name: "Google UX Design", issuer: "Google", year: "2022" },
 ];
