@@ -12,7 +12,7 @@ export const site = {
 
   intro: [
     "I build production web experiences at the seam of design and development.",
-    "Nine-plus years shipping production UI software, and three years designing and building web apps end to end.",
+    "Nine-plus years shipping production UI software, and five years designing and building web apps end to end.",
   ],
 
   contact: {
@@ -72,7 +72,7 @@ export const needToTalk = {
   url: "https://needtalk.com",
   urlLabel: "needtalk.com",
   role: "Cofounder and sole technical owner",
-  dates: "Jan 2025 – present",
+  dates: "2021 – present",
   summary:
     "A two-sided marketplace connecting mental health providers and clients.",
   cardSummary:
