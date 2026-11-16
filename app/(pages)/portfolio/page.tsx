@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Portfolio } from "@/components/views/Portfolio";
 
-export const metadata: Metadata = { title: "Portfolio" };
+export const metadata: Metadata = {
+  title: "Portfolio",
+  alternates: { types: { "text/markdown": "/portfolio.md" } },
+};
 
 export default function PortfolioPage() {
   return <Portfolio />;

@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import type { ReactNode } from "react";
+import { JsonLd } from "@/components/JsonLd";
 import { SkipLink } from "@/components/layout";
 import { site } from "@/content/site";
+import { personSchema } from "@/content/structuredData";
 import { GlobalStyle } from "@/styles/GlobalStyle";
 import { palette } from "@/styles/tokens";
 import StyledComponentsRegistry from "./registry";
@@ -23,6 +25,8 @@ export const metadata: Metadata = {
     images: [{ url: "/og.png", width: 1200, height: 630, alt: `${site.name}, ${site.title}` }],
   },
   twitter: { card: "summary_large_image" },
+  // Points AI assistants at the plain-text index (/llms.txt).
+  alternates: { types: { "text/plain": "/llms.txt" } },
 };
 
 export const viewport: Viewport = {
@@ -36,6 +40,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={inter.variable}>
       <body>
+        <JsonLd data={personSchema()} />
         <StyledComponentsRegistry>
           <GlobalStyle />
           <SkipLink href="#main" className="visually-hidden">
